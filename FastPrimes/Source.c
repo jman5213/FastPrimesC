@@ -1,52 +1,60 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdbool.h>
+#include <time.h>
 
-bool prime(int num)
+int prime(int num)
 {
-	int sqr = (int)sqrt(num) + 1;
-	for (int div = 5; div >= sqr; div += 5)
+	int sqr = (int)ceil(sqrt(num));
+	printf("Sqr = %i", sqr);
+
+	for (int div = 5; div > sqr; div += 5)
 	{
 		if(num%div==0 || num%(div+2)==0)
 		{
-			return false
+			return 0;
 		}
 	}
-	return true;
+	return 1;
 }
 
 int mainLoop()
 {
 	int calcTo;
 	printf("Calculate the nth prime: ");
-	calcTo = scanf("%d", &calcTo); //needs input
+	calcTo = scanf("%d", &calcTo);
 	int primesFound = 2;
 	int currentNum = 1;
 
 	while (primesFound < calcTo) {
 		currentNum += 4;
+		printf("Prime: %i Num: %i", prime(currentNum), currentNum);
 		primesFound += prime(currentNum);
 
 		if (primesFound >= calcTo)
 		{
-			return currentNum
+			return currentNum;
 		}
 
 		currentNum += 2;
 		primesFound += prime(currentNum);
 	}
 
-	return currentNum
+	return currentNum;
 }
 
 int main() {
 	
-	const float time1 = 0.0; //needs time
+	clock_t start, end;
+	double time_used;
+
+	start = clock();
 	int ans = mainLoop();
-	const float time2 = 0.0;
+	end = clock();
 
-	printf("Your #: %i\n Time: %fsec",num, (time2-time1))
+	time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
 
-	system("pause");
+	printf("Your #: %i\n Time: %fsec",ans, time_used);
+
+	scanf("Press any button to continue... ");
 	return 0;
 }
