@@ -19,7 +19,7 @@ int mainLoop()
 {
 	int calcTo;
 	calcTo = 1000000;
-	printf("calcTo: %i",calcTo);
+	printf("calcTo: %i\n",calcTo);
 	int primesFound = 2;
 	int currentNum = 1;
 
@@ -50,7 +50,7 @@ int main() {
 
 	time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
 
-	printf("Your #: %i\n Time: %fsec",ans, time_used);
+	printf("Your #: %i\nTime: %fsec",ans, time_used);
 
 	return 0;
 }
