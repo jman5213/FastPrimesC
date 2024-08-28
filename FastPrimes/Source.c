@@ -5,9 +5,7 @@
 int prime(int num)
 {
 	int sqr = (int)ceil(sqrt(num));
-	printf("Sqr = %i", sqr);
-
-	for (int div = 5; div > sqr; div += 5)
+	for (int div = 5; div < (sqr+1); div += 6)
 	{
 		if(num%div==0 || num%(div+2)==0)
 		{
@@ -20,14 +18,13 @@ int prime(int num)
 int mainLoop()
 {
 	int calcTo;
-	printf("Calculate the nth prime: ");
-	calcTo = scanf("%d", &calcTo);
+	calcTo = 1000000;
+	printf("calcTo: %i",calcTo);
 	int primesFound = 2;
 	int currentNum = 1;
 
 	while (primesFound < calcTo) {
 		currentNum += 4;
-		printf("Prime: %i Num: %i", prime(currentNum), currentNum);
 		primesFound += prime(currentNum);
 
 		if (primesFound >= calcTo)
@@ -55,6 +52,5 @@ int main() {
 
 	printf("Your #: %i\n Time: %fsec",ans, time_used);
 
-	scanf("Press any button to continue... ");
 	return 0;
 }
